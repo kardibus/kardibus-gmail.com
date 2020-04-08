@@ -1,8 +1,8 @@
 package com.example.triton.domain;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Device {
@@ -11,7 +11,7 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long quantity;
-    private LocalDateTime date;
+    private Date date;
 
     public Device() {
     }
@@ -37,11 +37,11 @@ public class Device {
         this.quantity = quantity;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

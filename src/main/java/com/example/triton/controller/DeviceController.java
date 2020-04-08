@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Controller
@@ -45,7 +49,7 @@ public class DeviceController {
 
         Id.setQuantity(quantity);
         Id.setListDevice(listDevice);
-        Id.setDate(LocalDateTime.now());
+        Id.setDate(new Date());
         deviceRepo.save(Id);
 
         commonDeviceAll(model);
@@ -68,7 +72,7 @@ public class DeviceController {
             Device device = new Device();
             device.setQuantity(quantity);
             device.setListDevice(id);
-            device.setDate(LocalDateTime.now());
+            device.setDate(new Date());
             deviceRepo.save(device);
         }
 
@@ -83,5 +87,21 @@ public class DeviceController {
         Iterable<Device> devices=deviceRepo.findAll();
         model.addAttribute("listDevices",listDevices);
         model.addAttribute("devices",devices);
+    }
+
+    @PostMapping("/search")
+    public String search(@RequestParam(name ="search") String search, @RequestParam(name = "day") Boolean day, Model model) throws ParseException {
+         if(day) {
+             String[] str = search.split("-");
+
+             Iterable<ListDevice> listDevices = listDeviceRepo.findAll();
+             Iterable<Device> devices = deviceRepo.findByDay("%" + str[2] + "%");
+
+             model.addAttribute("listDevices", listDevices);
+             model.addAttribute("devices", devices);
+         }else{
+             commonDeviceAll(model);
+         }
+        return "index";
     }
 }
