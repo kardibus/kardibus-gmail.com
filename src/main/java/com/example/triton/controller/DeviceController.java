@@ -90,7 +90,7 @@ public class DeviceController {
     }
 
     @PostMapping("/search")
-    public String search(@RequestParam(name ="search") String search, @RequestParam(name = "day") String day,@RequestParam(name = "month") String month,@RequestParam(name = "year",required = false) String year, Model model) throws ParseException {
+    public String search(@RequestParam(name ="search") String search, @RequestParam(name = "day") String day,@RequestParam(name = "month",defaultValue = "0") String month,@RequestParam(name = "year",defaultValue = "0") String year, Model model) throws ParseException {
          if(day.equals("1") && !month.equals("2")) {
              String[] str = search.split("-");
 
