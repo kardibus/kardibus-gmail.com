@@ -90,12 +90,20 @@ public class DeviceController {
     }
 
     @PostMapping("/search")
-    public String search(@RequestParam(name ="search") String search, @RequestParam(name = "day") Boolean day,@RequestParam(name = "month",required = false) Boolean month,@RequestParam(name = "year",required = false) Boolean year, Model model) throws ParseException {
-         if(day) {
+    public String search(@RequestParam(name ="search") String search, @RequestParam(name = "day") String day,@RequestParam(name = "month") String month,@RequestParam(name = "year",required = false) String year, Model model) throws ParseException {
+         if(day.equals("1") && !month.equals("2")) {
              String[] str = search.split("-");
 
              Iterable<ListDevice> listDevices = listDeviceRepo.findAll();
-             Iterable<Device> devices = deviceRepo.findBy("%" + str[2] + "%");
+             Iterable<Device> devices = deviceRepo.findByDay("%"+str[2]+"."+str[1]+"."+"%");
+
+             model.addAttribute("listDevices", listDevices);
+             model.addAttribute("devices", devices);
+         }else if(month.equals("2")){
+             String[] str = search.split("-");
+
+             Iterable<ListDevice> listDevices = listDeviceRepo.findAll();
+             Iterable<Device> devices = deviceRepo.findByMonth(str[2]+"-"+str[1]+"-"+"01",search);
 
              model.addAttribute("listDevices", listDevices);
              model.addAttribute("devices", devices);
