@@ -13,7 +13,7 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand">TRITON</a>
+    <a class="navbar-brand" href="/">TRITON</a>
     <a class="nav-item nav-link" href="/listdev">ListDevice</a>
     <a class="nav-item nav-link" href="/dev">Device</a>
 

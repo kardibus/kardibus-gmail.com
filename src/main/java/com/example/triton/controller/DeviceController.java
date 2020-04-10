@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -92,7 +93,7 @@ public class DeviceController {
     }
 
     @PostMapping("/search")
-    public String search(@RequestParam(name ="search",defaultValue = "0000-00-00") String search, @RequestParam(name = "day",defaultValue = "0") String day,@RequestParam(name = "month",defaultValue = "0") String month,@RequestParam(name = "year",defaultValue = "0") String year, Model model) throws ParseException {
+    public String search(@RequestParam(name ="search",defaultValue = "0000-00-00") String search, @RequestParam(name = "day",defaultValue = "0") String day, @RequestParam(name = "month",defaultValue = "0") String month, @RequestParam(name = "year",defaultValue = "0") String year, Model model) throws ParseException {
 
         DateFormat format=new SimpleDateFormat("yyyy-mm-dd");
         Date date=format.parse(search);
