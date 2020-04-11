@@ -50,12 +50,11 @@ public class DeviceController {
                               @RequestParam("listDevice") ListDevice listDevice,
                               Model model){
 
-        if(Id!=null) {
             Id.setQuantity(quantity);
             Id.setListDevice(listDevice);
             Id.setDate(new Date());
             deviceRepo.save(Id);
-        }
+
 
         commonDeviceAll(model);
 

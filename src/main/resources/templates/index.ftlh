@@ -63,13 +63,25 @@
     </div>
 </form>
 
-<#list devices as devices>
-<div class="shadow p-3 mt-1 mb-1 bg-white rounded">
-    <a>${devices.quantity} шт</a>
-    <a>${devices.listDevice.name} ${devices.listDevice.number?string("############")}</a>
-    <a>${devices.date?string("dd.mm.yyyy")}</a>
-</div>
-</#list>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">quantity</th>
+        <th scope="col">name</th>
+        <th scope="col">date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <#list devices as devices>
+    <tr>
+        <td>${devices.quantity} шт</td>
+        <td>${devices.listDevice.name} ${devices.listDevice.number?string("############")}</td>
+        <td>${devices.date?string("dd.mm.yyyy")}</td>
+    </tr>
+    </#list>
+    </tbody>
+</table>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
