@@ -76,7 +76,7 @@
     <tr>
         <td>${devices.quantity} шт</td>
         <td>${devices.listDevice.name} ${devices.listDevice.number?string("############")}</td>
-        <td>${devices.date?string("dd.mm.yyyy")}</td>
+        <td>${devices.date?string("dd.MM.yyyy")}</td>
     </tr>
     </#list>
     </tbody>
