@@ -67,7 +67,7 @@
 <div class="shadow p-3 mt-1 mb-1 bg-white rounded">
     <a>${devices.quantity} шт</a>
     <a>${devices.listDevice.name} ${devices.listDevice.number?string("############")}</a>
-    <a>${devices.date}</a>
+    <a>${devices.date?string("dd.mm.yyyy")}</a>
 </div>
 </#list>
 <!-- Optional JavaScript -->

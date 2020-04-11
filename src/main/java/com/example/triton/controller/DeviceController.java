@@ -50,26 +50,30 @@ public class DeviceController {
                               @RequestParam("listDevice") ListDevice listDevice,
                               Model model){
 
-        Id.setQuantity(quantity);
-        Id.setListDevice(listDevice);
-        Id.setDate(new Date());
-        deviceRepo.save(Id);
+        if(Id!=null) {
+            Id.setQuantity(quantity);
+            Id.setListDevice(listDevice);
+            Id.setDate(new Date());
+            deviceRepo.save(Id);
+        }
 
         commonDeviceAll(model);
+
         return "dev";
     }
 
     @PostMapping("/deleteDevice/{id}")
     public String deleteDevice(@PathVariable(value = "id",required = false) Long id, Model model){
+
         deviceRepo.deleteById(id);
 
        commonDeviceAll(model);
+
        return "dev";
     }
 
     @PostMapping("/createDevice/")
     public String createDeviceIndex (@RequestParam(name = "quantity",required = false) Long quantity,@RequestParam(name = "listDevice",required = false) ListDevice id, Model model){
-
 
         if (quantity!=null) {
             Device device = new Device();
