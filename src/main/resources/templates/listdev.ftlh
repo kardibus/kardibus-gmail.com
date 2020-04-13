@@ -29,7 +29,7 @@
         <tr>
            <form method="post" action="/updateListDevice/${list.id}" enctype="multipart/form-data">
                <td>  <input type="text" aria-label="First name"
-                            class="form-control ml-2" value="${list.number?string("############")} "name="number"> </td>
+                            class="form-control ml-2" value="${list.number?string("############")}" name="number"> </td>
                <td>    <input type="text" aria-label="First name" class="form-control ml-2" value="${list.name}" name="name"> </td>
                 <td>    <button class="btn btn-primary ml-2" type="submit">Save</button></td>
            </form>
