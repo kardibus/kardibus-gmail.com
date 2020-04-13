@@ -108,21 +108,28 @@ public class DeviceController {
         String dateFormat=format.format(date);
         String[] str=dateFormat.split("-");
 
-         if(day.equals("1") && !month.equals("2")) {
+         if(day.equals("1") && month.equals("0") && year.equals("0")) {
 
              Iterable<ListDevice> listDevices = listDeviceRepo.findAll();
              Iterable<Device> devices = deviceRepo.findByDay("%"+str[2]+"."+str[1]+"."+"%",user.getId());
 
              model.addAttribute("listDevices", listDevices);
              model.addAttribute("devices", devices);
-         }else if(month.equals("2")){
+         }else if(month.equals("2") && year.equals("0")){
 
              Iterable<ListDevice> listDevices = listDeviceRepo.findAll();
              Iterable<Device> devices = deviceRepo.findByMonth(str[0]+"-"+str[1]+"-"+"01",dateFormat,user.getId());
 
              model.addAttribute("listDevices", listDevices);
              model.addAttribute("devices", devices);
-         }else{
+         }else if(year.equals("3")) {
+
+             Iterable<ListDevice> listDevices = listDeviceRepo.findAll();
+             Iterable<Device> devices = deviceRepo.findByYear("2019-01-01",dateFormat,user.getId());
+
+             model.addAttribute("listDevices", listDevices);
+             model.addAttribute("devices", devices);
+        }else {
              commonDeviceAll(model,user);
          }
         return "index";
