@@ -1,7 +1,6 @@
 package com.example.triton.domain;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -12,6 +11,10 @@ public class Device {
     private Long id;
     private Long quantity;
     private Date date;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
 
     public Device() {
     }
@@ -51,5 +54,17 @@ public class Device {
 
     public void setListDevice(ListDevice listDevice) {
         this.listDevice = listDevice;
+    }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
