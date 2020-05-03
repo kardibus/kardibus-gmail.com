@@ -31,9 +31,11 @@
                <td>  <input type="text" aria-label="First name"
                             class="form-control ml-2" value="${list.number?string("############")}" name="number"> </td>
                <td>    <input type="text" aria-label="First name" class="form-control ml-2" value="${list.name}" name="name"> </td>
+               <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <td>    <button class="btn btn-primary ml-2" type="submit">Save</button></td>
            </form>
             <td> <form method="post" action="/deleteListDevice/${list.id}" enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
                     <button type="submit" class="btn btn-secondary ml-2 mr-2">Delete</button></form></td>
         </tr>
     </#list>

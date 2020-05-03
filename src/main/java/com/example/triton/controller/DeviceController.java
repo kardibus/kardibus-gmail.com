@@ -48,7 +48,7 @@ public class DeviceController {
     }
 
     @PostMapping("/updateDevice/{id}")
-    public String updateBrand(@AuthenticationPrincipal User user,@PathVariable(value = "id",required = false) Device Id,
+    public String updateBrand(@AuthenticationPrincipal User user,@PathVariable(value = "id") Device Id,
                               @RequestParam("quantity") Long quantity,
                               @RequestParam("listDevice") ListDevice listDevice,
                               Model model){
